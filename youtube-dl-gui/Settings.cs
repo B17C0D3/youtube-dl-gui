@@ -16,11 +16,6 @@ namespace youtube_dl_gui
             get { return config.getValue("Settings", "Directory", false); }
             set { config.setValue("Settings", "Directory", value, false); }
         }
-        public string NameTemplate
-        {
-            get { return config.getValue("Settings", "NameTemplate", false); }
-            set { config.setValue("Settings", "NameTemplate", value, false); }
-        }
         public int Video
         {
             get { return Convert.ToInt32(config.getValue("Settings", "Video", false)); }
@@ -41,6 +36,21 @@ namespace youtube_dl_gui
             get { return Convert.ToBoolean(config.getValue("Settings", "UseNametemplate", false)); }
             set { config.setValue("Settings", "UseNametemplate", value.ToString(), false); }
         }
+        public string NameTemplate
+        {
+            get { return config.getValue("Settings", "NameTemplate", false); }
+            set { config.setValue("Settings", "NameTemplate", value, false); }
+        }
+        public bool UsePlaylistItems
+        {
+            get { return Convert.ToBoolean(config.getValue("Settings", "UsePlaylistItems", false)); }
+            set { config.setValue("Settings", "UsePlaylistItems", value.ToString(), false); }
+        }
+        public string PlaylistItems
+        {
+            get { return config.getValue("Settings", "PlaylistItems", false); }
+            set { config.setValue("Settings", "PlaylistItems", value, false); }
+        }
         public bool IgnoreErrors
         {
             get { return Convert.ToBoolean(config.getValue("Settings", "IgnoreErrors", false)); }
@@ -55,6 +65,21 @@ namespace youtube_dl_gui
         {
             get { return Convert.ToBoolean(config.getValue("Settings", "NoCacheDir", false)); }
             set { config.setValue("Settings", "NoCacheDir", value.ToString(), false); }
+        }
+        public bool EmbedThumbnail
+        {
+            get { return Convert.ToBoolean(config.getValue("Settings", "EmbedThumbnail", false)); }
+            set { config.setValue("Settings", "EmbedThumbnail", value.ToString(), false); }
+        }
+        public bool DisableFilesystemCaching
+        {
+            get { return Convert.ToBoolean(config.getValue("Settings", "DisableFilesystemCaching", false)); }
+            set { config.setValue("Settings", "DisableFilesystemCaching", value.ToString(), false); }
+        }
+        public bool CloseOutputLog
+        {
+            get { return Convert.ToBoolean(config.getValue("Settings", "CloseOutputLog", false)); }
+            set { config.setValue("Settings", "CloseOutputLog", value.ToString(), false); }
         }
         public bool SkipVideo
         {
@@ -81,11 +106,6 @@ namespace youtube_dl_gui
             get { return Convert.ToBoolean(config.getValue("Settings", "IgnoreConfig", false)); }
             set { config.setValue("Settings", "IgnoreConfig", value.ToString(), false); }
         }
-        public bool EmbedThumbnail
-        {
-            get { return Convert.ToBoolean(config.getValue("Settings", "EmbedThumbnail", false)); }
-            set { config.setValue("Settings", "EmbedThumbnail", value.ToString(), false); }
-        }
         public bool EmbedMetadata
         {
             get { return Convert.ToBoolean(config.getValue("Settings", "EmbedMetadata", false)); }
@@ -104,31 +124,42 @@ namespace youtube_dl_gui
             }
             catch
             {
-                //erstellle standart config
-                config = new CfgFile();
-                config.FileName = cfgFile;
-
-                string d = System.IO.Directory.GetCurrentDirectory();
-                if (!d.EndsWith("\\"))
-                    d += "\\";
-                Directory = d;
-                NameTemplate = @"%(upload_date)s_%(title)s_%(uploader_id)s-%(id)s.%(ext)s";
-                Video = 0;
-                Audio = 0;
-                Container = 0;
-                UseNametemplate = false;
-                IgnoreErrors = false;
-                NoPlaylist = false;
-                NoCacheDir = false;
-                SkipVideo = false;
-                FreeFormats = false;
-                ExtractAudio = false;
-                KeepVideo = false;
-                IgnoreConfig = false;
-                EmbedThumbnail = false;
-                EmbedMetadata = false;
-                config.Save();
+                FailSafeSettings();
             }
+        }
+
+        public void FailSafeSettings()
+        {
+            //erstellle standart config
+            config = new CfgFile();
+            config.FileName = cfgFile;
+
+            string d = System.IO.Directory.GetCurrentDirectory();
+            if (!d.EndsWith("\\"))
+                d += "\\";
+            Directory = d;
+
+            Video = 0;
+            Audio = 0;
+            Container = 0;
+            UseNametemplate = false;
+            NameTemplate = @"%(upload_date)s_%(title)s_%(uploader_id)s-%(id)s.%(ext)s";
+            NoPlaylist = false;
+            UsePlaylistItems = false;
+            PlaylistItems = "";
+            IgnoreErrors = false;
+            EmbedThumbnail = false;
+            NoCacheDir = false;
+            CloseOutputLog = false;
+
+            /* SkipVideo = false;
+            FreeFormats = false;
+            ExtractAudio = false;
+            KeepVideo = false;
+            IgnoreConfig = false;
+            EmbedMetadata = false; */
+
+            config.Save();
         }
     }   
 }

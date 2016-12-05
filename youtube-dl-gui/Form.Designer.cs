@@ -32,16 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form));
             this.tbURL = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
-            this.groupBox = new System.Windows.Forms.GroupBox();
-            this.cbIgnoreConfig = new System.Windows.Forms.CheckBox();
-            this.btnSaveSettings = new System.Windows.Forms.Button();
-            this.cbEmbedMetadata = new System.Windows.Forms.CheckBox();
+            this.groupBoxOptions = new System.Windows.Forms.GroupBox();
             this.cbEmbedThumbnail = new System.Windows.Forms.CheckBox();
-            this.cbKeepVideo = new System.Windows.Forms.CheckBox();
-            this.cbFreeFormats = new System.Windows.Forms.CheckBox();
-            this.cbNoCacheDir = new System.Windows.Forms.CheckBox();
             this.cbNoPlaylist = new System.Windows.Forms.CheckBox();
+            this.tbPlaylistItems = new System.Windows.Forms.TextBox();
             this.tbFilenameFormat = new System.Windows.Forms.TextBox();
+            this.cbCloseOutput = new System.Windows.Forms.CheckBox();
+            this.cbNoCacheDir = new System.Windows.Forms.CheckBox();
+            this.cbPlaylistItems = new System.Windows.Forms.CheckBox();
             this.cbFilenameFormat = new System.Windows.Forms.CheckBox();
             this.cbIngoreErrors = new System.Windows.Forms.CheckBox();
             this.lblDocumentation = new System.Windows.Forms.LinkLabel();
@@ -51,25 +49,33 @@
             this.comboFile = new System.Windows.Forms.ComboBox();
             this.comboAudio = new System.Windows.Forms.ComboBox();
             this.comboVideo = new System.Windows.Forms.ComboBox();
+            this.btnSaveSettings = new System.Windows.Forms.Button();
             this.tbDirectory = new System.Windows.Forms.TextBox();
             this.btnDirectory = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.groupBox.SuspendLayout();
+            this.groupBoxActions = new System.Windows.Forms.GroupBox();
+            this.btnClearCache = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnCheckFormats = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBoxOptions.SuspendLayout();
+            this.groupBoxActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbURL
             // 
             this.tbURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbURL.Location = new System.Drawing.Point(93, 14);
+            this.tbURL.Location = new System.Drawing.Point(50, 14);
             this.tbURL.Name = "tbURL";
-            this.tbURL.Size = new System.Drawing.Size(429, 20);
+            this.tbURL.Size = new System.Drawing.Size(472, 20);
             this.tbURL.TabIndex = 1;
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(12, 12);
+            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStart.Location = new System.Drawing.Point(429, 19);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 2;
@@ -77,123 +83,97 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // groupBox
+            // groupBoxOptions
             // 
-            this.groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBoxOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox.Controls.Add(this.cbIgnoreConfig);
-            this.groupBox.Controls.Add(this.btnSaveSettings);
-            this.groupBox.Controls.Add(this.cbEmbedMetadata);
-            this.groupBox.Controls.Add(this.cbEmbedThumbnail);
-            this.groupBox.Controls.Add(this.cbKeepVideo);
-            this.groupBox.Controls.Add(this.cbFreeFormats);
-            this.groupBox.Controls.Add(this.cbNoCacheDir);
-            this.groupBox.Controls.Add(this.cbNoPlaylist);
-            this.groupBox.Controls.Add(this.tbFilenameFormat);
-            this.groupBox.Controls.Add(this.cbFilenameFormat);
-            this.groupBox.Controls.Add(this.cbIngoreErrors);
-            this.groupBox.Controls.Add(this.lblDocumentation);
-            this.groupBox.Controls.Add(this.lblFile);
-            this.groupBox.Controls.Add(this.lblAudio);
-            this.groupBox.Controls.Add(this.lblVideo);
-            this.groupBox.Controls.Add(this.comboFile);
-            this.groupBox.Controls.Add(this.comboAudio);
-            this.groupBox.Controls.Add(this.comboVideo);
-            this.groupBox.Location = new System.Drawing.Point(15, 71);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(507, 128);
-            this.groupBox.TabIndex = 3;
-            this.groupBox.TabStop = false;
-            this.groupBox.Text = "Options";
-            // 
-            // cbIgnoreConfig
-            // 
-            this.cbIgnoreConfig.AutoSize = true;
-            this.cbIgnoreConfig.Location = new System.Drawing.Point(207, 94);
-            this.cbIgnoreConfig.Name = "cbIgnoreConfig";
-            this.cbIgnoreConfig.Size = new System.Drawing.Size(87, 17);
-            this.cbIgnoreConfig.TabIndex = 16;
-            this.cbIgnoreConfig.Text = "ignore config";
-            this.cbIgnoreConfig.UseVisualStyleBackColor = true;
-            // 
-            // btnSaveSettings
-            // 
-            this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveSettings.Location = new System.Drawing.Point(417, 104);
-            this.btnSaveSettings.Name = "btnSaveSettings";
-            this.btnSaveSettings.Size = new System.Drawing.Size(84, 23);
-            this.btnSaveSettings.TabIndex = 15;
-            this.btnSaveSettings.Text = "Save settings";
-            this.btnSaveSettings.UseVisualStyleBackColor = true;
-            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
-            // 
-            // cbEmbedMetadata
-            // 
-            this.cbEmbedMetadata.AutoSize = true;
-            this.cbEmbedMetadata.Location = new System.Drawing.Point(6, 94);
-            this.cbEmbedMetadata.Name = "cbEmbedMetadata";
-            this.cbEmbedMetadata.Size = new System.Drawing.Size(105, 17);
-            this.cbEmbedMetadata.TabIndex = 14;
-            this.cbEmbedMetadata.Text = "embed metadata";
-            this.cbEmbedMetadata.UseVisualStyleBackColor = true;
+            this.groupBoxOptions.Controls.Add(this.cbEmbedThumbnail);
+            this.groupBoxOptions.Controls.Add(this.cbNoPlaylist);
+            this.groupBoxOptions.Controls.Add(this.tbPlaylistItems);
+            this.groupBoxOptions.Controls.Add(this.tbFilenameFormat);
+            this.groupBoxOptions.Controls.Add(this.cbCloseOutput);
+            this.groupBoxOptions.Controls.Add(this.cbNoCacheDir);
+            this.groupBoxOptions.Controls.Add(this.cbPlaylistItems);
+            this.groupBoxOptions.Controls.Add(this.cbFilenameFormat);
+            this.groupBoxOptions.Controls.Add(this.cbIngoreErrors);
+            this.groupBoxOptions.Controls.Add(this.lblDocumentation);
+            this.groupBoxOptions.Controls.Add(this.lblFile);
+            this.groupBoxOptions.Controls.Add(this.lblAudio);
+            this.groupBoxOptions.Controls.Add(this.lblVideo);
+            this.groupBoxOptions.Controls.Add(this.comboFile);
+            this.groupBoxOptions.Controls.Add(this.comboAudio);
+            this.groupBoxOptions.Controls.Add(this.comboVideo);
+            this.groupBoxOptions.Location = new System.Drawing.Point(12, 71);
+            this.groupBoxOptions.Name = "groupBoxOptions";
+            this.groupBoxOptions.Size = new System.Drawing.Size(510, 130);
+            this.groupBoxOptions.TabIndex = 3;
+            this.groupBoxOptions.TabStop = false;
+            this.groupBoxOptions.Text = "Options";
             // 
             // cbEmbedThumbnail
             // 
             this.cbEmbedThumbnail.AutoSize = true;
-            this.cbEmbedThumbnail.Location = new System.Drawing.Point(293, 71);
+            this.cbEmbedThumbnail.Location = new System.Drawing.Point(398, 74);
             this.cbEmbedThumbnail.Name = "cbEmbedThumbnail";
             this.cbEmbedThumbnail.Size = new System.Drawing.Size(106, 17);
             this.cbEmbedThumbnail.TabIndex = 13;
             this.cbEmbedThumbnail.Text = "embed thumbnail";
             this.cbEmbedThumbnail.UseVisualStyleBackColor = true;
             // 
-            // cbKeepVideo
-            // 
-            this.cbKeepVideo.AutoSize = true;
-            this.cbKeepVideo.Location = new System.Drawing.Point(422, 49);
-            this.cbKeepVideo.Name = "cbKeepVideo";
-            this.cbKeepVideo.Size = new System.Drawing.Size(79, 17);
-            this.cbKeepVideo.TabIndex = 11;
-            this.cbKeepVideo.Text = "keep video";
-            this.cbKeepVideo.UseVisualStyleBackColor = true;
-            // 
-            // cbFreeFormats
-            // 
-            this.cbFreeFormats.AutoSize = true;
-            this.cbFreeFormats.Location = new System.Drawing.Point(176, 71);
-            this.cbFreeFormats.Name = "cbFreeFormats";
-            this.cbFreeFormats.Size = new System.Drawing.Size(111, 17);
-            this.cbFreeFormats.TabIndex = 9;
-            this.cbFreeFormats.Text = "prefer free formats";
-            this.cbFreeFormats.UseVisualStyleBackColor = true;
-            // 
-            // cbNoCacheDir
-            // 
-            this.cbNoCacheDir.AutoSize = true;
-            this.cbNoCacheDir.Location = new System.Drawing.Point(84, 71);
-            this.cbNoCacheDir.Name = "cbNoCacheDir";
-            this.cbNoCacheDir.Size = new System.Drawing.Size(85, 17);
-            this.cbNoCacheDir.TabIndex = 7;
-            this.cbNoCacheDir.Text = "no cache dir";
-            this.cbNoCacheDir.UseVisualStyleBackColor = true;
-            // 
             // cbNoPlaylist
             // 
             this.cbNoPlaylist.AutoSize = true;
-            this.cbNoPlaylist.Location = new System.Drawing.Point(6, 71);
+            this.cbNoPlaylist.Location = new System.Drawing.Point(432, 48);
             this.cbNoPlaylist.Name = "cbNoPlaylist";
             this.cbNoPlaylist.Size = new System.Drawing.Size(72, 17);
             this.cbNoPlaylist.TabIndex = 6;
             this.cbNoPlaylist.Text = "no playlist";
             this.cbNoPlaylist.UseVisualStyleBackColor = true;
             // 
+            // tbPlaylistItems
+            // 
+            this.tbPlaylistItems.Location = new System.Drawing.Point(96, 72);
+            this.tbPlaylistItems.Name = "tbPlaylistItems";
+            this.tbPlaylistItems.Size = new System.Drawing.Size(150, 20);
+            this.tbPlaylistItems.TabIndex = 5;
+            // 
             // tbFilenameFormat
             // 
             this.tbFilenameFormat.Location = new System.Drawing.Point(109, 46);
             this.tbFilenameFormat.Name = "tbFilenameFormat";
-            this.tbFilenameFormat.Size = new System.Drawing.Size(307, 20);
+            this.tbFilenameFormat.Size = new System.Drawing.Size(317, 20);
             this.tbFilenameFormat.TabIndex = 5;
+            // 
+            // cbCloseOutput
+            // 
+            this.cbCloseOutput.AutoSize = true;
+            this.cbCloseOutput.Location = new System.Drawing.Point(162, 98);
+            this.cbCloseOutput.Name = "cbCloseOutput";
+            this.cbCloseOutput.Size = new System.Drawing.Size(153, 17);
+            this.cbCloseOutput.TabIndex = 4;
+            this.cbCloseOutput.Text = "Close output log at the end";
+            this.cbCloseOutput.UseVisualStyleBackColor = true;
+            // 
+            // cbNoCacheDir
+            // 
+            this.cbNoCacheDir.AutoSize = true;
+            this.cbNoCacheDir.Location = new System.Drawing.Point(6, 98);
+            this.cbNoCacheDir.Name = "cbNoCacheDir";
+            this.cbNoCacheDir.Size = new System.Drawing.Size(150, 17);
+            this.cbNoCacheDir.TabIndex = 4;
+            this.cbNoCacheDir.Text = "Disable filesystem caching";
+            this.cbNoCacheDir.UseVisualStyleBackColor = true;
+            // 
+            // cbPlaylistItems
+            // 
+            this.cbPlaylistItems.AutoSize = true;
+            this.cbPlaylistItems.Location = new System.Drawing.Point(6, 75);
+            this.cbPlaylistItems.Name = "cbPlaylistItems";
+            this.cbPlaylistItems.Size = new System.Drawing.Size(84, 17);
+            this.cbPlaylistItems.TabIndex = 4;
+            this.cbPlaylistItems.Text = "playlist items";
+            this.cbPlaylistItems.UseVisualStyleBackColor = true;
             // 
             // cbFilenameFormat
             // 
@@ -208,18 +188,18 @@
             // cbIngoreErrors
             // 
             this.cbIngoreErrors.AutoSize = true;
-            this.cbIngoreErrors.Location = new System.Drawing.Point(117, 94);
+            this.cbIngoreErrors.Location = new System.Drawing.Point(252, 75);
             this.cbIngoreErrors.Name = "cbIngoreErrors";
-            this.cbIngoreErrors.Size = new System.Drawing.Size(84, 17);
+            this.cbIngoreErrors.Size = new System.Drawing.Size(140, 17);
             this.cbIngoreErrors.TabIndex = 3;
-            this.cbIngoreErrors.Text = "ignore errors";
+            this.cbIngoreErrors.Text = "continue playlist on error";
             this.cbIngoreErrors.UseVisualStyleBackColor = true;
             // 
             // lblDocumentation
             // 
             this.lblDocumentation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDocumentation.AutoSize = true;
-            this.lblDocumentation.Location = new System.Drawing.Point(332, 109);
+            this.lblDocumentation.Location = new System.Drawing.Point(425, 114);
             this.lblDocumentation.Name = "lblDocumentation";
             this.lblDocumentation.Size = new System.Drawing.Size(79, 13);
             this.lblDocumentation.TabIndex = 2;
@@ -230,78 +210,84 @@
             // lblFile
             // 
             this.lblFile.AutoSize = true;
-            this.lblFile.Location = new System.Drawing.Point(340, 22);
+            this.lblFile.Location = new System.Drawing.Point(334, 22);
             this.lblFile.Name = "lblFile";
-            this.lblFile.Size = new System.Drawing.Size(23, 13);
+            this.lblFile.Size = new System.Drawing.Size(81, 13);
             this.lblFile.TabIndex = 1;
-            this.lblFile.Text = "File";
+            this.lblFile.Text = "Local Container";
             // 
             // lblAudio
             // 
             this.lblAudio.AutoSize = true;
-            this.lblAudio.Location = new System.Drawing.Point(173, 22);
+            this.lblAudio.Location = new System.Drawing.Point(169, 22);
             this.lblAudio.Name = "lblAudio";
-            this.lblAudio.Size = new System.Drawing.Size(34, 13);
+            this.lblAudio.Size = new System.Drawing.Size(71, 13);
             this.lblAudio.TabIndex = 1;
-            this.lblAudio.Text = "Audio";
+            this.lblAudio.Text = "Audio Source";
             // 
             // lblVideo
             // 
             this.lblVideo.AutoSize = true;
             this.lblVideo.Location = new System.Drawing.Point(6, 22);
             this.lblVideo.Name = "lblVideo";
-            this.lblVideo.Size = new System.Drawing.Size(34, 13);
+            this.lblVideo.Size = new System.Drawing.Size(71, 13);
             this.lblVideo.TabIndex = 1;
-            this.lblVideo.Text = "Video";
+            this.lblVideo.Text = "Video Source";
             // 
             // comboFile
             // 
             this.comboFile.FormattingEnabled = true;
             this.comboFile.Items.AddRange(new object[] {
-            "auto",
-            "mkv",
             "mp4",
-            "ogg",
+            "mkv",
             "webm",
+            "ogg",
             "flv",
-            "mp3"});
-            this.comboFile.Location = new System.Drawing.Point(369, 19);
+            "mp3",
+            "opus"});
+            this.comboFile.Location = new System.Drawing.Point(421, 19);
             this.comboFile.Name = "comboFile";
-            this.comboFile.Size = new System.Drawing.Size(132, 21);
+            this.comboFile.Size = new System.Drawing.Size(83, 21);
             this.comboFile.TabIndex = 0;
             // 
             // comboAudio
             // 
             this.comboAudio.FormattingEnabled = true;
             this.comboAudio.Items.AddRange(new object[] {
-            "auto",
             "best",
-            "aac",
-            "vorbis",
-            "mp3",
             "m4a",
             "opus",
-            "wav"});
-            this.comboAudio.Location = new System.Drawing.Point(213, 19);
+            "vorbis"});
+            this.comboAudio.Location = new System.Drawing.Point(246, 19);
             this.comboAudio.Name = "comboAudio";
-            this.comboAudio.Size = new System.Drawing.Size(121, 21);
+            this.comboAudio.Size = new System.Drawing.Size(82, 21);
             this.comboAudio.TabIndex = 0;
             // 
             // comboVideo
             // 
             this.comboVideo.FormattingEnabled = true;
             this.comboVideo.Items.AddRange(new object[] {
-            "auto",
-            "best,mp4",
-            "1080p,mp4",
-            "720p,mp4",
-            "1080p",
-            "720p",
+            "best mp4",
+            "1080p mp4",
+            "720p mp4",
+            "best webm",
+            "1080p webm",
+            "720p webm",
             "doun\'t download"});
-            this.comboVideo.Location = new System.Drawing.Point(46, 19);
+            this.comboVideo.Location = new System.Drawing.Point(81, 19);
             this.comboVideo.Name = "comboVideo";
-            this.comboVideo.Size = new System.Drawing.Size(121, 21);
+            this.comboVideo.Size = new System.Drawing.Size(82, 21);
             this.comboVideo.TabIndex = 0;
+            // 
+            // btnSaveSettings
+            // 
+            this.btnSaveSettings.Location = new System.Drawing.Point(6, 19);
+            this.btnSaveSettings.Name = "btnSaveSettings";
+            this.btnSaveSettings.Size = new System.Drawing.Size(84, 23);
+            this.btnSaveSettings.TabIndex = 15;
+            this.btnSaveSettings.Text = "Save settings";
+            this.btnSaveSettings.UseVisualStyleBackColor = true;
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
             // tbDirectory
             // 
@@ -327,22 +313,79 @@
             this.timer.Interval = 1500;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // groupBoxActions
+            // 
+            this.groupBoxActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxActions.Controls.Add(this.btnClearCache);
+            this.groupBoxActions.Controls.Add(this.btnUpdate);
+            this.groupBoxActions.Controls.Add(this.btnCheckFormats);
+            this.groupBoxActions.Controls.Add(this.btnStart);
+            this.groupBoxActions.Controls.Add(this.btnSaveSettings);
+            this.groupBoxActions.Location = new System.Drawing.Point(12, 207);
+            this.groupBoxActions.Name = "groupBoxActions";
+            this.groupBoxActions.Size = new System.Drawing.Size(510, 48);
+            this.groupBoxActions.TabIndex = 4;
+            this.groupBoxActions.TabStop = false;
+            this.groupBoxActions.Text = "Actions";
+            // 
+            // btnClearCache
+            // 
+            this.btnClearCache.Location = new System.Drawing.Point(96, 19);
+            this.btnClearCache.Name = "btnClearCache";
+            this.btnClearCache.Size = new System.Drawing.Size(82, 23);
+            this.btnClearCache.TabIndex = 18;
+            this.btnClearCache.Text = "Clear Cache";
+            this.btnClearCache.UseVisualStyleBackColor = true;
+            this.btnClearCache.Click += new System.EventHandler(this.btnClearCache_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(323, 19);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(54, 23);
+            this.btnUpdate.TabIndex = 17;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnCheckFormats
+            // 
+            this.btnCheckFormats.Location = new System.Drawing.Point(184, 19);
+            this.btnCheckFormats.Name = "btnCheckFormats";
+            this.btnCheckFormats.Size = new System.Drawing.Size(133, 23);
+            this.btnCheckFormats.TabIndex = 16;
+            this.btnCheckFormats.Text = "Check available formats";
+            this.btnCheckFormats.UseVisualStyleBackColor = true;
+            this.btnCheckFormats.Click += new System.EventHandler(this.btnCheckFormats_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "URL:";
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 211);
-            this.Controls.Add(this.groupBox);
+            this.ClientSize = new System.Drawing.Size(534, 267);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBoxActions);
+            this.Controls.Add(this.groupBoxOptions);
             this.Controls.Add(this.btnDirectory);
-            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.tbDirectory);
             this.Controls.Add(this.tbURL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form";
             this.Text = "youtube-dl-gui";
-            this.groupBox.ResumeLayout(false);
-            this.groupBox.PerformLayout();
+            this.groupBoxOptions.ResumeLayout(false);
+            this.groupBoxOptions.PerformLayout();
+            this.groupBoxActions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,7 +394,7 @@
         #endregion
         private System.Windows.Forms.TextBox tbURL;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.GroupBox groupBox;
+        private System.Windows.Forms.GroupBox groupBoxOptions;
         private System.Windows.Forms.TextBox tbDirectory;
         private System.Windows.Forms.Button btnDirectory;
         private System.Windows.Forms.Label lblFile;
@@ -365,15 +408,19 @@
         private System.Windows.Forms.TextBox tbFilenameFormat;
         private System.Windows.Forms.CheckBox cbFilenameFormat;
         private System.Windows.Forms.CheckBox cbIngoreErrors;
-        private System.Windows.Forms.CheckBox cbEmbedMetadata;
         private System.Windows.Forms.CheckBox cbEmbedThumbnail;
-        private System.Windows.Forms.CheckBox cbKeepVideo;
-        private System.Windows.Forms.CheckBox cbFreeFormats;
-        private System.Windows.Forms.CheckBox cbNoCacheDir;
         private System.Windows.Forms.CheckBox cbNoPlaylist;
         private System.Windows.Forms.Button btnSaveSettings;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.CheckBox cbIgnoreConfig;
+        private System.Windows.Forms.GroupBox groupBoxActions;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnCheckFormats;
+        private System.Windows.Forms.TextBox tbPlaylistItems;
+        private System.Windows.Forms.CheckBox cbPlaylistItems;
+        private System.Windows.Forms.CheckBox cbCloseOutput;
+        private System.Windows.Forms.CheckBox cbNoCacheDir;
+        private System.Windows.Forms.Button btnClearCache;
     }
 }
 
