@@ -182,9 +182,29 @@ namespace youtube_dl_gui
             btnUpdate.Enabled = false;
             timer.Tag = btnUpdate;
             timer.Start();
+
+            string homeDirectory, filename;
+            homeDirectory = System.IO.Directory.GetCurrentDirectory();
+            if (!homeDirectory.EndsWith("\\"))
+                homeDirectory += "\\";
             
+            filename = homeDirectory + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".bat";
+
+            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename, false, Encoding.Default))
+            {
+                sw.WriteLine("wget --no-check-certificate https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-latest-win64-static.7z");
+                sw.WriteLine("7z e ffmpeg-latest-win64-static.7z *.exe -r -y");
+                sw.WriteLine("DEL ffmpeg-latest-win64-static.7z");
+                sw.WriteLine("wget --no-check-certificate https://yt-dl.org/downloads/latest/youtube-dl.exe");
+                if (cbCloseOutput.CheckState == CheckState.Unchecked)
+                {
+                    sw.WriteLine("PAUSE");
+                    sw.WriteLine("DEL \"" + filename + "\"");
+                }
+            }
+
             System.Diagnostics.Process p = new System.Diagnostics.Process();
-            p.StartInfo = new System.Diagnostics.ProcessStartInfo("youtube-dl.exe", "-U");
+            p.StartInfo = new System.Diagnostics.ProcessStartInfo(filename);
             p.Start();
         }
 
@@ -202,7 +222,7 @@ namespace youtube_dl_gui
                 homeDirectory += "\\";
             args = "-F " + tbURL.Text;
             command = $"\"{homeDirectory}youtube-dl.exe\" {args}";
-            filename = homeDirectory + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss-fff") + ".bat";
+            filename = homeDirectory + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".bat";
 
             using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename, false, Encoding.Default))
             {
@@ -241,12 +261,16 @@ namespace youtube_dl_gui
                 homeDirectory += "\\";
             args = @argsBuilder();
             command = $"\"{homeDirectory}youtube-dl.exe\" {args}";
-            filename = homeDirectory + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss-fff") + ".bat";
+            filename = homeDirectory + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".bat";
 
             using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filename, false, Encoding.Default))
             {
                 sw.WriteLine(command);
-                sw.WriteLine("PAUSE");
+                if (cbCloseOutput.CheckState == CheckState.Unchecked)
+                {
+                    sw.WriteLine("PAUSE");
+                    sw.WriteLine("DEL \"" + filename + "\"");
+                }
             }
 
             System.Diagnostics.Process p = new System.Diagnostics.Process();
